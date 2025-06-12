@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+header{
+    background: linear-gradient(135deg, #5eedf5 0%, #08adcf 90%);
+    padding: 40px;
+    text-align: center;
+}
+nav{
+    background-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 25px 0;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 15px;
+    font-weight: bold;
+    transition: background-color 0.4s;
+    border-radius: 10px;
+}
+nav a:hover{
+    background-color: #9c9e9e;
+}
+main{
+    padding: 20px;
+    width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section{
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 15px;
+}
+
+#skills table{
+    background-color: #f3f3f3;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+
+}
+#skills table th, #skills table td{
+    border: 2px solid #b7b7b7;
+    padding: 10px;
+    text-align: left;
+    border-radius: 2px;
+}
+#skills table th{
+    background-color: #64c2dc;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+skills table thead tr{
+    background-color: #f0f0f0;
+    color: black;
+}
+contact form div{
+    margin: 10px;
+    padding: 5px;
+    
+}
+contact form div label{
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+#contact form {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#contact form div input, #contact form div textarea, #contact form div select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+button{
+    background-color: #0db7e6;
+    color: white;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+button:hover{
+    background-color: #64c2dc;
+}
+footer{
+    background-color: #0db7e6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+footer p a{
+    text-decoration: none;
+    color: white !important;
+    font-weight: bold;
+}
+footer p a:hover{
+    text-decoration: underline;
+}
+h4{
+    text-align: center;
+    color: #0db7e6;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+#projects div{
+    background-color: #f3f3f3;
+    margin: 10px;
+    border: 2px solid #0db7e6;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+}
