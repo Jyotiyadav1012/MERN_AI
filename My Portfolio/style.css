@@ -1,0 +1,167 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: white;
+    color: #333;
+}
+nav.main-nav{
+    background: linear-gradient(90deg, #677ce7, #7549f8);
+    color: #32c5e6;
+;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: blanchedalmond 0px 0px 10px 0px;
+}
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.logo{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 2em;
+}
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity .5s ease;
+}
+.nav-links a:hover{
+    opacity: 0.7;
+}
+.hamburger{
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.hamburger span{
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    transition: 0.3s;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 2rem;
+}
+.hero{
+    background: linear-gradient(90deg, #677ce7, #7549f8);
+    color: white;
+    padding: 0 6em;
+    text-align: center;
+}
+.hero h1{
+    font-size: 3rem;
+    margin-bottom: .7rem;
+}
+.hero p{
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.hero .btn{
+    background-color: #a48ee6;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.animate-pulse{
+    animation: pulse 2s infinite;
+}
+#services{
+    margin: 3em 0;
+    background-color: #f4f4f4;
+}
+.services-title{
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5em;
+    color: black;
+}
+.services-flex{
+    display: flex;
+    gap: 1.5em;
+    margin-bottom: 3em;
+    flex-wrap: wrap;
+}
+.services-flex .service-card{
+    flex: 1;
+    min-width: 300px;
+    background-color: rgb(235, 235, 235);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+
+}
+.service-icon{
+    font-size: 3rem;
+    /*color: #677ce7;*/
+    margin-bottom: 0.5em;
+}
+.service-card h3{
+    color: #677ce7;
+    font-size: 1.5rem;
+    margin-bottom: 0.5em;
+}
+.portfolio{
+    background-color: rgb(243, 243, 243) ;
+}
+.portfolio-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3em;
+    padding: 2em;
+}
+.portfolio-item{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+.portfolio-item img{
+    width: 100%;
+    border-radius: 10px;
+}
+@media screen and (max-width: 768px){
+    .hamburger{
+        display: flex;
+    }
+    .nav-links{
+        display: none;
+    
+    }
+}
