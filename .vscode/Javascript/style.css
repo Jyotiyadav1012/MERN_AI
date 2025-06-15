@@ -1,0 +1,43 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: black;
+    min-height: 100vh;
+}
+.output-box {
+    background: linear-gradient(135deg, #667eea 0%, #63eabb 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+}
+button {
+    background: #b81c1c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: transform 0.2s ease;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+button:hover {
+    transform: scale(1.05);
+}
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#patternOutput{
+    color: rgb(33, 28, 169);
+    font-size: 2em;
+    line-height: .8;
+}
