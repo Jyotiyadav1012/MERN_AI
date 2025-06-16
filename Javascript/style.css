@@ -1,4 +1,5 @@
 body {
+    background: linear-gradient(135deg, #667eea 0%, #63eabb 100%);
     font-family: 'Segoe UI', sans-serif;
     max-width: 800px;
     margin: 0 auto;
@@ -7,7 +8,7 @@ body {
     min-height: 100vh;
 }
 .output-box {
-    background: linear-gradient(135deg, #667eea 0%, #63eabb 100%);
+    background: linear-gradient(135deg, #7c93fa 0%, #88f6cf 100%);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -39,5 +40,7 @@ input {
 #patternOutput{
     color: rgb(33, 28, 169);
     font-size: 2em;
+    text-align: center;
+    padding: auto;
     line-height: .8;
 }
