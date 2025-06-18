@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Master Class</title>
+
+    <script defer src = "main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DOM Manipulation Master Class</h1>
+    <p>Today we control the entire webpage with JavaScript!</p>
+    
+    
+    <div class="lab-section">
+        <h2>Lab 1: Dynamic Element Creation</h2>
+        <div id="element-playground" class="demo-box">
+            <p>Elements will be created here dynamically!</p>
+        </div>
+        
+        <div>
+            <select id="elementType">
+                <option value="div">Div Element</option>
+                <option value="p">Paragraph</option>
+                <option value="h1">Heading</option>
+                <option value="button">Button</option>
+                <option value="img">Image</option>
+            </select>
+            <input type="text" id="elementContent" placeholder="Element content">
+            <button onclick="createCustomElement()">Create Element</button>
+            <button onclick="clearPlayground()">Clear All</button>
+        </div>
+    </div>
+    
+    <div class="lab-section">
+        <h2>Lab 2: List Manipulation Master</h2>
+        <div class="demo-box">
+            <h3>Indian States List</h3>
+            <ul id="states-list">
+                <li>Maharashtra</li>
+                <li>Karnataka</li>
+                <li>Tamil Nadu</li>
+                <li>Delhi</li>
+            </ul>
+        </div>
+        
+        <div>
+            <input type="text" id="newState" placeholder="Enter state name">
+            <button onclick="addState()">Add State (Home Work)</button>
+            <button onclick="removeLastState()">Remove Last</button>
+            <button onclick="sortStates()">Sort A-Z</button>
+            <button onclick="highlightStates()">Highlight All</button>
+        </div>
+    </div>
+
+    
+</body>
+</html>
