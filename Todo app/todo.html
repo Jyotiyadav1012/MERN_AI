@@ -1,0 +1,208 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todo App - JavaScript</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      background: #f3f3f3;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(228, 43, 194, 0.855) 0%, rgb(79, 2, 152) 100%);
+    }
+    .app-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .todo-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .input-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .input-section input,
+    .input-section select,
+    .input-section button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    .todo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .todo-text {
+      flex: 1;
+    }
+    .todo-item.completed .todo-text {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .priority-high {
+      color: red;
+      font-weight: bold;
+    }
+    .priority-medium {
+      color: orange;
+    }
+    .priority-low {
+      color: green;
+    }
+    .action-btn {
+      padding: 5px 10px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    .filters {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .filters button {
+      padding: 8px 12px;
+    }
+    .stats {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .todo-checkbox{
+      padding: 5px;
+      width: 50px;
+      height: 50px;
+    }
+    .task-done{
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="app-title">Todo App</h2>
+  <div class="todo-container">
+    <div class="input-section">
+      <input type="text" id="todoInput" placeholder="Enter task"/>
+      <select id="prioritySelect">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="addBtn">Add</button>
+    </div>
+    <div id="todoList" class="todo-list">
+      <div class="empty-state">No tasks yet</div>
+    </div>
+    <div class="filters">
+      <button id="showAllBtn">Show All</button>
+      <button id="showPendingBtn">Show Pending</button>
+      <button id="showCompletedBtn">Show Completed</button>
+    </div> 
+
+    <div class="stats">
+      Total: <span id="totalTasks">0</span> |
+      Pending: <span id="pendingTasks">0</span> |
+      Completed: <span id="completedTasks">0</span> |
+      Completion Rate: <span id="completionRate">0%</span>
+    </div>
+  </div>
+
+  <script>
+    let input = document.getElementById("todoInput");
+    let addBtn = document.getElementById("addBtn");
+    let todoList = document.getElementById("todoList");
+    let prioritySelect = document.getElementById("prioritySelect");
+    addBtn.addEventListener("click", function(){
+        // alert("btn clicked");
+        let taskText = input.value.trim();
+        if (taskText === "") {
+            alert("Please enter a task.");
+            return;
+        }
+        else{
+            let priority = prioritySelect.value;
+            
+
+            if(document.querySelector(".empty-state")){
+                document.querySelector(".empty-state").innerHTML = ""; 
+            }
+
+            let todoElement = `
+            <div class = "todo-item">
+                <input type = "checkbox" class = "todo-checkbox";/>
+                <div class = "priority-${priority}">${priority}</div>
+                <div class = "todo-text">${taskText}</div>
+                <button>Edit</button>
+                <button>Delete</button>
+                </div> 
+            `;
+
+           todoList.innerHTML += todoElement;
+           updateStats();
+           input.value = "";
+        }
+    })
+
+    todoList.addEventListener("change", function(event) {
+        if(event.target.classList.contains("todo-checkbox")) {
+            event.target.classList.toggle("completed");
+        }
+        updateStats();
+    })
+
+    function updateStats(){
+        let all = document.querySelectorAll(".todo-item");
+        let completed = document.querySelectorAll(".completed");
+        console.log("All: "+ all.length);
+        console.log("Completed: "+ completed.length);
+
+        let total = all.length;
+        let done = completed.length;
+        let pending = all.length - completed.length;
+        document.getElementById("totalTasks").innerText = total;
+        document.getElementById("pendingTasks").innerText = pending;
+        document.getElementById("completedTasks").innerText = done;
+
+        let rate = total === 0 ? 0 : Math.round((done / total) * 100);
+        document.getElementById("completionRate").innerText = rate + "%";
+    }
+    document.getElementById("showAllBtn").addEventListener("click", function() {
+        showTasks("all");
+    });
+    document.getElementById("showPendingBtn").addEventListener("click", function() {
+        showTasks("pending");
+    });
+    document.getElementById("showCompletedBtn").addEventListener("click", function() {
+        showTasks("completed");
+    });
+    function showTasks(filterType){
+        const tasks = document.querySelectorAll(".todo-item");
+        tasks.forEach(task=> {
+            task.style.display = "flex"; // Show all tasks by default
+            if(filterType === "pending" && task.querySelector(".todo-checkbox").classList.contains("completed")) {
+                task.style.display = "none"; // Hide completed tasks
+            } else if(filterType === "completed" && !task.querySelector(".todo-checkbox").classList.contains("completed")) {
+                task.style.display = "none"; // Hide pending tasks
+            }
+        })
+    }
+    
+
+  </script>
+</body>
+</html>
