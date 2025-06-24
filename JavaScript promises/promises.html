@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promises Master Class</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: black;
+            min-height: 100vh;
+        }
+        
+        .lab-section {
+            background: #11e0ad;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-box {
+            background: #9cf3dd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .status-box {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            border: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        button {
+            background: #038a4b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+            margin: 8px;
+            /* display: block;
+            margin: 8px auto; */
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+        }
+        
+        .success { border-left-color: #27ae60; }
+        .error { border-left-color: #e74c3c; }
+        .pending { border-left-color: #f39c12; }
+        
+        .success,.error,.pending { 
+            border-left-width: 5px; 
+            border-left-style: solid;
+
+        }
+        
+        .code-example {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .promise-chain {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .promise-step {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .arrow {
+            font-size: 20px;
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Promises Master Class</h1>
+    <p>Learn to handle asynchronous operations!</p>
+    
+    <div class="lab-section">
+        <h2>Basic Promise Understanding</h2>
+        <div class="demo-box">
+            <h3>Promise States Demonstration</h3>
+            <p>A Promise can be in one of three states: Pending, Fulfilled, or Rejected</p>
+            
+            <div class="promise-chain">
+                <div class="promise-step pending">Pending<br><small>Operation in progress</small></div>
+                <div class="arrow">→</div>
+                <div class="promise-step success">Fulfilled<br><small>Operation successful</small></div>
+                <div class="promise-step error">Rejected<br><small>Operation failed</small></div>
+            </div>
+            
+            <button onclick="demonstrateBasicPromise()">Create Basic Promise</button>
+            
+            <div id="promiseResult" class="status-box">
+                Click button to see Promises in action!
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+       
+        function demonstrateBasicPromise(){
+
+             let myPromise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                let random = Math.random();
+                if(random > .5){
+                    resolve("Promise resolved successfully with value: " + random);
+                } else {
+                    reject("Promise rejected with error: Something went wrong!: " + random);
+                }
+            }, 2000);
+        });
+
+            let resultDiv = document.getElementById("promiseResult");
+            resultDiv.className = "status-box pending";
+            resultDiv.textContent = "Promise is pending...";
+
+            myPromise.then(function(result){
+                resultDiv.className = "status-box success";
+                resultDiv.textContent = result;
+            }.then(function(){
+                resultDiv.className = "status-box success";
+            }))
+            .catch(function(error){
+                resultDiv.className = "status-box error";
+                resultDiv.textContent = error;
+            });
+        }
+            
+        
+    </script>
+</body>
+</html>

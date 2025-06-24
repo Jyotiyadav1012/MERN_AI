@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Current weather at India Gate</h1>
+    <div id="weather-box">Loading...</div>
+    <script>
+
+        async function getWeather() {
+            
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=34.2268&longitude=77.5619&current_weather=true";
+
+        fetch("https://api.open-meteo.com/v1/forecast?latitude=34.2268&longitude=77.5619&current_weather=true")
+        .then(function(result){
+            alert("success")
+        })
+        .catch(function(error){
+            alert("error")
+        });
+        let result = await fetch("https://api.open-meteo.com/v1/forecast?latitude=34.2268&longitude=77.5619&current_weather=true");
+        let weatherData = await result.json();
+        console.log(weatherData);
+        document.getElementById("weather-box").innerHTML = `
+            <p>Temperature: ${weatherData.current_weather.temperature}°C</p>
+            <p>Wind Speed: ${weatherData.current_weather.windspeed} km/h</p>
+            <p>Wind Direction: ${weatherData.current_weather.winddirection}°</p>
+            <p>Weather Code: ${weatherData.current_weather.weathercode}</p>
+        `;
+        } 
+        getWeather();
+    </script>
+</body>
+</html>
