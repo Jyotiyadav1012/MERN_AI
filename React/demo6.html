@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Understanding React Concepts</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .demo-box { border: 2px solid #ccc; padding: 20px; margin: 20px 0; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; cursor: pointer; }
+        .student { padding: 10px; margin: 5px; background: #f0f0f0; border-radius: 5px; }
+        input{ padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App(){
+            // let students = ['Alice', 'Bob', 'Charlie'];
+            let [students, setStudents] = React.useState(['Alice', 'Bob', 'Charlie']);
+            let[name, setName] = React.useState("");
+
+            let addStudent = ()=>{
+                {/*let newName = "Jyoti";
+                students.push(newName);*/}
+                setStudents([...students, name]);
+               setName("");// You can change this to get input from a text box
+            }
+            let updateName = (event)=>{
+                setName(event.target.value);
+            }
+            return (
+                <div className="demo-box">
+                    <div>
+                        <h2>React Way - Automatic Updates</h2>
+                        {
+                            students.map(function(std, index){
+                                return <p key={index}>{std}</p>
+                            })
+                        }
+                        <input type="text" value = {name} onChange={updateName} placeholder="Add student" />
+                        <button onClick={addStudent}>Add Student</button>
+
+                    </div>
+                    
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

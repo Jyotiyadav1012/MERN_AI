@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+      .container {
+          background: #f5f5f5;
+          padding: 20px;
+          border-radius: 10px;
+      }
+      button {
+          background: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin: 5px;
+      }
+      button:hover {
+          background: #0056b3;
+      }
+  </style>
+
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // App component
+      function App(){
+        return (
+          <div>
+            <Comp/>
+            <Comp/>
+          </div>
+        );
+      }
+
+      function Comp(){
+        // let count = 45;
+        let [count, setCount] = React.useState(0);
+
+        function increment(){
+          setCount(count+1);
+          console.log(count);
+        }
+        return (
+          <div className="container">
+            <h1>Counter App</h1>
+            <p>This is counter app</p>
+            <p>Counter: {count}</p>
+            <p>Counter: {count}</p>
+            <p>Counter: {count}</p>
+            <p>Counter: {count}</p>
+            
+            <button onClick={increment}>
+              Increase count
+            </button>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App></App>, document.getElementById("root"));
+    </script>
+  </body>
+</html>
